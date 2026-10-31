@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* Sección principal del banner */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    height: 80vh;
+    max-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    background-color: #f77f00;
+    overflow: visible;
+}
+
+/* Fondo geométrico diagonal */
+.diagonal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-magenta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: #e5007e;
+    clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+    z-index: 2;
+}
+
+.diagonal-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 61.5%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+    box-shadow: 20px 0 30px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bg-orange {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f47b20;
+    z-index: 0;
+}
+
+.bg-turquoise-shape {
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    width: 350px;
+    height: 350px;
+    background-color: #00b4d8;
+    border-top-left-radius: 200px;
+    border-top-right-radius: 200px;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+}
+
+/* Contenido de texto (Izquierda) */
+.hero-content {
+    position: relative;
+    z-index: 4;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #f7931e;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #e68212;
+    transform: translateY(-2px);
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de la imagen (Derecha) */
+.hero-image-container {
+    position: absolute;
+    right: -70px;
+    top: 0;
+    height: 100%;
+    z-index: 1; /* Cambiamos de 4 a 1 para que quede detrás del header */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none; /* Evita que estorbe con los clics del menú */
+    overflow: hidden;
+}
+
+.hero-image {
+    max-height: 105%;
+    width: auto;
+    object-fit: contain;
+    margin-top: -35px;
+    filter: drop-shadow(-12px 12px 22px rgba(0, 0, 0, 0.35));
+}
+
+/* Sección de Productos en Carrusel Horizontal */
+.productos-section {
+    padding: 60px 5%;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.productos-container {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Ocultar barra en Firefox */
+    -ms-overflow-style: none; /* Ocultar barra en IE/Edge */
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.productos-container::-webkit-scrollbar {
+    display: none; /* Ocultar barra en Chrome/Safari */
+}
+
+/* Estilo de tarjeta de producto */
+.product-card {
+    flex: 0 0 280px; /* Ancho fijo para cada tarjeta en el carrusel */
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    border: 3px solid #00b4d8;
+}
+
+.product-card:nth-child(3n+2) { border-color: #f47b20; }
+.product-card:nth-child(3n+3) { border-color: #e5007e; }
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img-container {
+    width: 100%;
+    height: 280px;
+    background-color: #fce4ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.product-card:nth-child(3n+1) .product-title { background-color: #00b4d8; }
+.product-card:nth-child(3n+2) .product-title { background-color: #f47b20; }
+.product-card:nth-child(3n+3) .product-title { background-color: #e5007e; }
+
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Botones de navegación del carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.carousel-btn.prev {
+    left: -20px;
+}
+
+.carousel-btn.next {
+    right: -20px;
+}

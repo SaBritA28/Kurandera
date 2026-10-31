@@ -1,0 +1,423 @@
+/* ==========================================================================
+   ESTILOS CSS - HEADER KURANDERA
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor principal del encabezado (Fondo turquesa exacto) */
+.site-header {
+    background-color: #00afb7;
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilos del Logotipo */
+.header-logo a {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+/* Estilos de la Navegación Principal */
+.header-nav > ul {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.header-nav ul li a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.header-nav ul li a:hover {
+    opacity: 0.8;
+}
+
+/* Estilos para Menús Desplegables (Productos y Contacto) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown .arrow {
+    font-size: 10px;
+    margin-left: 4px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #00969e;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Activación del menú desplegable al pasar el cursor */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown:hover .arrow {
+    transform: rotate(180deg);
+}
+
+/* Estilos de los Iconos */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.header-icons a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.header-icons a:hover {
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   ESTILOS DE LA BARRA DE BÚSQUEDA FLUIDA Y RESULTADOS
+   ========================================================================== */
+
+.search-box {
+    position: relative; /* Vital para posicionar la lista desplegable */
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 2px 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambia el fondo cuando se pasa el cursor o está en foco */
+.search-box:hover,
+.search-box:focus-within {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Input integrado en el flujo */
+.search-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    height: 32px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Botón de la lupa */
+.search-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: opacity 0.3s ease;
+}
+
+.search-btn:hover {
+    opacity: 0.8;
+}
+
+/* Al activar, el input gana ancho REAL y desplaza el menú */
+.search-box:hover .search-input,
+.search-input:focus {
+    width: 200px;
+    padding: 0 10px 0 12px;
+    opacity: 1;
+}
+/* BORRAR O COMENTAR ESTO EN header.css */
+.search-results-dropdown {
+    display: none !important;
+}
+
+/* ==========================================================================
+   ESTILOS INTEGRADOS DEL CARRITO - KURANDERA
+   ========================================================================== */
+
+.cart-floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #00bcd4;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-floating-btn:hover {
+    transform: scale(1.1);
+    background-color: #008ba3;
+}
+
+.cart-floating-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4081;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out;
+}
+
+.cart-modal.active {
+    right: 0;
+}
+
+.cart-header {
+    padding: 20px;
+    background-color: #00bcd4;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.cart-item-price {
+    font-size: 13px;
+    color: #666;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.cart-item-controls button {
+    background: #f0f0f0;
+    border: none;
+    width: 24px;
+    height: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cart-footer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.btn-whatsapp-pay {
+    width: 100%;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-whatsapp-pay:hover {
+    background-color: #1ebe5d;
+}
+
+/* ==========================================================================
+   BOTÓN "AGREGAR AL CARRITO" COMPACTO Y EN TONO MORADO - KURANDERA
+   ========================================================================== */
+
+.product-card button.agregar-carrito, 
+.product-card .btn-buy {
+    background-color: #8e24aa; /* Tono morado elegante, vibrante pero no chillante */
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px; /* Más pequeño y estilizado */
+    font-family: inherit;
+    font-size: 12px; /* Letra ligeramente más compacta */
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.product-card button.agregar-carrito:hover, 
+.product-card .btn-buy:hover {
+    background-color: #7b1fa2; /* Un tono ligeramente más profundo al pasar el cursor */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.product-card button.agregar-carrito:active, 
+.product-card .btn-buy:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}

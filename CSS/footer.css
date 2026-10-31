@@ -1,0 +1,266 @@
+/* ==========================================================================
+ESTILOS CSS - FOOTER KURANDERA
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #2e1a38;
+}
+
+/* Contenedor principal del footer */
+.site-footer {
+    background-color: #3b2046; /* Morado profundo corporativo */
+    color: #ffffff;
+    width: 100%;
+    padding-top: 20px;
+    position: relative;
+}
+
+/* Ondas decorativas superiores */
+.footer-waves {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin-bottom: 30px;
+}
+
+.footer-waves svg {
+    display: block;
+    width: 100%;
+    height: 45px;
+    opacity: 0.95;
+    filter: drop-shadow(0px 0px 1px rgba(0, 175, 183, 0.5));
+}
+
+/* Contenedor interno general */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Fila superior: Newsletter */
+.footer-newsletter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.newsletter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+}
+
+.newsletter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.newsletter-input {
+    width: 100%;
+    height: 48px;
+    background-color: #00afb7;
+    border: none;
+    border-radius: 6px;
+    padding: 0 15px;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Sección principal con Logo y Columnas de Enlaces */
+.footer-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinea todo al fondo de la fila para que repose sobre la línea */
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 0px; 
+}
+
+/* Contenedor combinado para el Logotipo y el Bloque Decorativo */
+.footer-brand-wrapper {
+    display: flex;
+    align-items: flex-end; 
+    gap: 25px; /* Espacio entre el logo y el bloque naranja/rosa */
+}
+
+/* Contenedor del Logotipo */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px; /* Sube visualmente el logo a la altura de los textos */
+}
+
+/* LOGOTIPO EN IMAGEN */
+.footer-brand .footer-logo-img {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.footer-brand .footer-logo-img:hover {
+    opacity: 0.9;
+}
+
+/* Bloque decorativo Naranja y Rosa (Queda exactamente al ras de la línea turquesa) */
+.footer-custom-block {
+    width: 110px;
+    height: 110px;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    margin-bottom: 25px; /* Empuja el bloque hacia abajo para tocar exacto la línea divisoria */
+}
+
+.footer-custom-block .color-orange {
+    background-color: #ff7a00;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-custom-block .color-pink {
+    background-color: #e91e63;
+    width: 50%;
+    height: 100%;
+}
+
+/* Columnas de Enlaces Estilo Referencia Rosa */
+.footer-links-columns {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+}
+
+.footer-column h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-column ul li a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.9;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-column ul li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Iconos de Redes Sociales (Instagram, Facebook, WhatsApp) */
+.social-icons-inline {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-icons-inline a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #00afb7;
+    color: #ffffff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.social-icons-inline a:hover {
+    opacity: 0.85;
+}
+
+/* Línea divisoria turquesa hasta abajo */
+.footer-divider {
+    border: none;
+    height: 2px;
+    background-color: #00afb7;
+    margin-top: 0;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* Parte inferior: Derechos reservados */
+.footer-bottom {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.footer-bottom p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+/* Contenedor del input y el botón de envío en el footer */
+.newsletter-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.newsletter-input-wrapper .newsletter-input {
+    width: 100%;
+    padding-right: 45px; /* Espacio para que el texto no quede debajo del botón */
+}
+
+/* Botón de la flecha */
+#btnEnviarFooter {
+    position: absolute;
+    right: 8px;
+    background: #00afb7; /* Color turquesa de la marca */
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #ffffff; /* Flecha blanca */
+    transition: background 0.3s ease;
+}
+
+#btnEnviarFooter:hover {
+    background: #008f96; /* Tono turquesa un poco más oscuro al pasar el cursor */
+}

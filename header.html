@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURANDERAMX</title>
+    <!-- Importación de tipografías desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="CSS/header.css">
+</head>
+<body>
+
+    <!-- Encabezado principal de la página -->
+    <header class="site-header">
+        <div class="header-container">
+            
+            <!-- Logotipo de la marca -->
+            <div class="header-logo">
+                <a href="home.html">KURANDERA</a>
+            </div>
+
+            <!-- Menú de navegación principal con dropdowns -->
+            <nav class="header-nav">
+                <ul>
+                    
+                    <!-- Menú Desplegable: Productos -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Productos <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="collares.html">Collares</a></li>
+                            <li><a href="anillos.html">Anillos</a></li>
+                            <li><a href="aretes.html">Aretes</a></li>
+                            <li><a href="conjuntos.html">Conjuntos</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Enlace simple: Nosotros -->
+                    <li><a href="nosotros.html">Nosotros</a></li>
+
+                    <!-- Menú Desplegable: Contacto -->
+                    <li class="dropdown">
+                        <a href="contacto.html" class="dropdown-toggle">Contacto <span class="arrow">&#9662;</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://www.instagram.com/kuranderamx?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            <li><a href="https://www.facebook.com/kuranderaMX" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <!-- Iconos de la derecha -->
+            <div class="header-icons">
+                <!-- Buscador desplegable con caja de resultados -->
+                <div class="search-box">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar productos..." aria-label="Buscar productos" autocomplete="off">
+                    <button type="button" class="search-btn" aria-label="Buscar">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Lista desplegable de resultados flotante -->
+                    <div id="searchResults" class="search-results-dropdown"></div>
+                </div>
+
+                <!-- Bolsa de compras -->
+                <a href="#" aria-label="Carrito de compras">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </a>
+            </div> <!-- Cierre correcto de header-icons -->
+
+        </div>
+    </header>
+
+    <!-- Archivo JS de búsqueda colocado correctamente al final -->
+    <script src="scripts/search.js"></script>
+</body>
+</html>

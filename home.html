@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURANDERAMX</title>
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Hojas de estilos externas -->
+    <link rel="stylesheet" href="CSS/home.css">
+    <link rel="stylesheet" href="CSS/footer.css">
+</head>
+<body>
+
+    <header>
+        <div id="header"></div>
+    </header>
+
+    <section class="hero-section">
+        <div class="diagonal-bg">
+            <div class="diagonal-shadow"></div>
+            <div class="bg-magenta"></div>
+            <div class="bg-orange"></div>
+            <div class="bg-turquoise-shape"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                JOYERÍA Y<br>
+                ACCESORIOS<br>
+                ÚNICOS
+            </h1>
+            <a href="#" class="cta-button">¡LO QUIERO YA!</a>
+            <p class="hero-subtitle">Hecho con amor en México</p>
+        </div>
+
+        <div class="hero-image-container">
+            <img src="https://i.imgur.com/CNaR1NB.png" alt="Collares" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Sección de Productos en Carrusel -->
+    <section class="productos-section">
+        <h2 class="section-heading">NUESTROS PRODUCTOS</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev" onclick="scrollCarousel(-1)">&#10094;</button>
+            
+            <div id="productosContainer" class="productos-container">
+                <p style="text-align: center; width: 100%;">Cargando productos...</p>
+            </div>
+
+            <button class="carousel-btn next" onclick="scrollCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <footer>
+        <div id="footer"></div>
+    </footer>
+
+    <!-- Lógica del Carrusel y Carga de Google Sheets -->
+    <script>
+        const SPREADSHEET_ID = '1bliVSZrIA0-MXRBsVztA5woG7rAwuL4_Zoabst8NWSc';
+        const CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv`;
+
+        let productosGlobales = []; // Variable global accesible para el buscador
+
+        async function cargarProductos() {
+            try {
+                const urlSinCache = `${CSV_URL}&t=${new Date().getTime()}`;
+                const response = await fetch(urlSinCache);
+                if (!response.ok) throw new Error('Error al conectar con Google Sheets');
+                
+                const csvText = await response.text();
+                productosGlobales = parseCSV(csvText);
+                renderizarProductos(productosGlobales);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('productosContainer').innerHTML = `
+                    <p style="text-align: center; color: red; width: 100%;">
+                        No se pudieron cargar los productos. Asegúrate de que la hoja de Google Sheets sea pública.
+                    </p>`;
+            }
+        }
+
+        function parseCSV(text) {
+            const lines = text.split('\n').filter(line => line.trim() !== '');
+            if (lines.length === 0) return [];
+            
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+            const result = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                const obj = {};
+                for (let j = 0; j < headers.length; j++) {
+                    let value = currentLine[j] ? currentLine[j].trim() : '';
+                    value = value.replace(/^"(.*)"$/, '$1');
+                    obj[headers[j]] = value;
+                }
+                result.push(obj);
+            }
+            return result;
+        }
+
+        function renderizarProductos(productos) {
+            const container = document.getElementById('productosContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            if (productos.length === 0) {
+                container.innerHTML = '<p style="text-align: center; width: 100%; padding: 20px;">No se encontraron productos.</p>';
+                return;
+            }
+
+            productos.forEach(prod => {
+                const nombre = prod.producto || prod.nombre || prod.titulo || 'Producto';
+                const precio = prod.precio || prod.costo || '0';
+                let imgUrl = prod.imagen ? prod.imagen.trim() : 'https://via.placeholder.com/300';
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                card.innerHTML = `
+                    <div class="product-img-container">
+                        <img src="${imgUrl}" alt="${nombre}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300';">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${nombre}</h3>
+                        <p class="product-price">$${precio} MXN</p>
+                        <button class="btn-buy" style="margin-top: 8px; cursor: pointer;">Agregar al carrito</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Mover carrusel con las flechas
+        function scrollCarousel(direction) {
+            const container = document.getElementById('productosContainer');
+            const scrollAmount = 320;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarProductos();
+        });
+    </script>
+
+    <!-- Scripts externos -->
+    <script src="scripts/components.js"></script>
+    <script src="scripts/carrito.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
