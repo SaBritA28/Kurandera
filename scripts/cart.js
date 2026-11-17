@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const mensajeFinal = `¡Hola! Me gustaría realizar el siguiente pedido en Kurandera:\n${textoLista}\nCon un total de $${totalGeneral} MXN\n¿Cuáles son los métodos de pago disponibles y el proceso de entrega?`;
-            const numeroWhatsApp = "5217979773160";
+            const numeroWhatsApp = "5212222933023";
             window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`, '_blank');
         });
     }
@@ -173,7 +173,7 @@ document.addEventListener('click', function(e) {
     const texto = input.value.trim();
     if (texto === "") return;
 
-    const numeroWhatsApp = "5217979773160";
+    const numeroWhatsApp = "5212222933023";
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
     
     window.open(url, '_blank');
@@ -188,7 +188,7 @@ document.addEventListener('keydown', function(e) {
             const texto = input.value.trim();
             if (texto === "") return;
 
-            const numeroWhatsApp = "5217979773160";
+            const numeroWhatsApp = "5212222933023";
             const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
             
             window.open(url, '_blank');
