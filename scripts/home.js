@@ -56,20 +56,32 @@ function renderizarProductos(productos) {
         const nombre = prod.producto || prod.nombre || prod.titulo || 'Producto';
         const precio = prod.precio || prod.costo || '0';
         let imgUrl = prod.imagen ? prod.imagen.trim() : 'https://via.placeholder.com/300';
+        if (!imgUrl.startsWith('http://') && !imgUrl.startsWith('https://')) {
+            imgUrl = 'https://via.placeholder.com/300';
+        }
 
         const card = document.createElement('div');
         card.className = 'product-card';
-
         card.innerHTML = `
             <div class="product-img-container">
-                <img src="${imgUrl}" alt="${nombre}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300';">
+                <img alt="">
             </div>
             <div class="product-info">
-                <h3 class="product-title">${nombre}</h3>
-                <p class="product-price">$${precio} MXN</p>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
                 <button class="btn-buy" style="margin-top: 8px; cursor: pointer;">Agregar al carrito</button>
             </div>
         `;
+
+        const imagen = card.querySelector('img');
+        imagen.src = imgUrl;
+        imagen.alt = nombre;
+        imagen.addEventListener('error', () => {
+            imagen.onerror = null;
+            imagen.src = 'https://via.placeholder.com/300';
+        }, { once: true });
+        card.querySelector('.product-title').textContent = nombre;
+        card.querySelector('.product-price').textContent = `$${precio} MXN`;
         container.appendChild(card);
     });
 }

@@ -99,17 +99,24 @@
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
-
                 card.innerHTML = `
                     <div class="product-img-container">
-                        <img src="${imagenSrc}" alt="${prod.producto}" onerror="this.src='https://via.placeholder.com/300?text=Error+de+Imagen'">
+                        <img alt="">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">${prod.producto}</h3>
-                        <p class="product-price">$${prod.precio || '0'} MXN</p>
+                        <h3 class="product-title"></h3>
+                        <p class="product-price"></p>
                         <button class="btn-buy" style="margin-top: 8px; cursor: pointer;">Agregar al carrito</button>
                     </div>
                 `;
+                const imagen = card.querySelector('img');
+                imagen.src = imagenSrc;
+                imagen.alt = prod.producto;
+                imagen.addEventListener('error', () => {
+                    imagen.src = 'https://via.placeholder.com/300?text=Error+de+Imagen';
+                }, { once: true });
+                card.querySelector('.product-title').textContent = prod.producto;
+                card.querySelector('.product-price').textContent = `$${prod.precio || '0'} MXN`;
                 container.appendChild(card);
             });
         }

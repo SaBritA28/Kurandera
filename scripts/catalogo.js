@@ -73,17 +73,24 @@ function renderizarProductos(productos) {
 
         const card = document.createElement('div');
         card.className = 'product-card';
-
         card.innerHTML = `
             <div class="product-img-container">
-                <img src="${imagenSrc}" alt="${nombreProd}" onerror="this.src='https://via.placeholder.com/300?text=Error+de+Imagen'">
+                <img alt="">
             </div>
             <div class="product-info">
-                <h3 class="product-title">${nombreProd}</h3>
-                <p class="product-price">$${precioProd} MXN</p>
+                <h3 class="product-title"></h3>
+                <p class="product-price"></p>
                 <button class="btn-buy agregar-carrito" style="margin-top: 6px; cursor: pointer;">Agregar al carrito</button>
             </div>
         `;
+        const imagen = card.querySelector('img');
+        imagen.src = imagenSrc;
+        imagen.alt = nombreProd;
+        imagen.addEventListener('error', () => {
+            imagen.src = 'https://via.placeholder.com/300?text=Error+de+Imagen';
+        }, { once: true });
+        card.querySelector('.product-title').textContent = nombreProd;
+        card.querySelector('.product-price').textContent = `$${precioProd} MXN`;
         container.appendChild(card);
     });
 }

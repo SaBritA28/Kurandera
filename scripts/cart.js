@@ -2,7 +2,13 @@
 // LÓGICA DE KURANDERA - CARRITO Y FOOTER WHATSAPP
 // ==========================================================================
 
-let carrito = JSON.parse(localStorage.getItem('kurandera_carrito')) || [];
+let carrito = [];
+try {
+    const carritoGuardado = JSON.parse(localStorage.getItem('kurandera_carrito'));
+    carrito = Array.isArray(carritoGuardado) ? carritoGuardado : [];
+} catch (error) {
+    console.error('No se pudo restaurar el carrito:', error);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. INYECCIÓN DEL CARRITO FLOTANTE Y MODAL
@@ -106,29 +112,54 @@ document.addEventListener('DOMContentLoaded', () => {
         floatingBtn.style.display = 'flex';
         let totalPzs = 0;
         let sumaTotal = 0;
-        let htmlItems = '';
+        cartBody.replaceChildren();
 
         carrito.forEach((item, index) => {
             totalPzs += item.cantidad;
             sumaTotal += item.precio * item.cantidad;
-            htmlItems += `
-                <div class="cart-item">
-                    <img src="${item.imagen}" alt="${item.titulo}">
-                    <div class="cart-item-details">
-                        <div class="cart-item-title">${item.titulo}</div>
-                        <div class="cart-item-price">$${item.precio} MXN</div>
-                        <div class="cart-item-controls">
-                            <button onclick="cambiarCantidad(${index}, -1)">-</button>
-                            <span>${item.cantidad}</span>
-                            <button onclick="cambiarCantidad(${index}, 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            `;
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+
+            const imagen = document.createElement('img');
+            const imagenSrc = typeof item.imagen === 'string' &&
+                (item.imagen.startsWith('http://') || item.imagen.startsWith('https://'))
+                ? item.imagen
+                : 'https://via.placeholder.com/300';
+            imagen.src = imagenSrc;
+            imagen.alt = item.titulo || 'Producto';
+
+            const detalles = document.createElement('div');
+            detalles.className = 'cart-item-details';
+
+            const titulo = document.createElement('div');
+            titulo.className = 'cart-item-title';
+            titulo.textContent = item.titulo || 'Producto';
+
+            const precio = document.createElement('div');
+            precio.className = 'cart-item-price';
+            precio.textContent = `$${item.precio} MXN`;
+
+            const controles = document.createElement('div');
+            controles.className = 'cart-item-controls';
+
+            const disminuir = document.createElement('button');
+            disminuir.textContent = '-';
+            disminuir.addEventListener('click', () => cambiarCantidad(index, -1));
+
+            const cantidad = document.createElement('span');
+            cantidad.textContent = String(item.cantidad);
+
+            const aumentar = document.createElement('button');
+            aumentar.textContent = '+';
+            aumentar.addEventListener('click', () => cambiarCantidad(index, 1));
+
+            controles.append(disminuir, cantidad, aumentar);
+            detalles.append(titulo, precio, controles);
+            cartItem.append(imagen, detalles);
+            cartBody.appendChild(cartItem);
         });
 
         cartBadge.textContent = totalPzs;
-        cartBody.innerHTML = htmlItems;
         cartTotalPrice.textContent = `$${sumaTotal} MXN`;
     }
 
